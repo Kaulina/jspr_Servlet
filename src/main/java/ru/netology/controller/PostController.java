@@ -19,7 +19,7 @@ public class PostController {
   private final PostService service;
   private final Gson gson;
 
-  public PostController(PostService service) {
+  public PostController(PostService service, Gson gson) {
     this.service = service;
     this.gson = new Gson();
   }
