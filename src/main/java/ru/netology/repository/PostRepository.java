@@ -1,8 +1,8 @@
 package ru.netology.repository;
 
+import org.springframework.stereotype.Repository;
 import ru.netology.model.Post;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -13,6 +13,7 @@ import static java.util.Optional.*;
 import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
 
+@Repository
 public class PostRepository {
   private static final long EMPTY = 0;
 
