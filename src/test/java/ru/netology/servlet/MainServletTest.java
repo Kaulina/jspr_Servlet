@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import ru.netology.config.ApplicationConfig;
+
 import ru.netology.model.Post;
 import ru.netology.repository.PostRepository;
 
@@ -38,7 +38,8 @@ class MainServletTest {
         response = new MockHttpServletResponse();
         sut = new MainServlet();
         sut.init();
-        postRepository = ApplicationConfig.getInstance().getPostRepository();
+        context = sut.getContext();
+        postRepository = context.getBean(PostRepository.class);
     }
 
     @AfterEach
@@ -47,7 +48,8 @@ class MainServletTest {
         response = null;
         postRepository = null;
         sut = null;
-        ApplicationConfig.getInstance().dispose();
+        context.close();
+        context = null;
     }
 
     @Test
