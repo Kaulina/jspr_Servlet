@@ -1,6 +1,4 @@
 package ru.netology.servlet;
-
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
@@ -11,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import static javax.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 import static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND;
 
-public class MainServlet<GenericApplicationContext> extends HttpServlet {
+public class MainServlet extends HttpServlet {
+
   private GenericApplicationContext context;
   private HandlerMapping handlerMapping;
 
   @Override
   public void init() {
-
     context = new AnnotationConfigApplicationContext("ru.netology");
     handlerMapping = context.getBean(HandlerMapping.class);
   }
@@ -38,6 +36,7 @@ public class MainServlet<GenericApplicationContext> extends HttpServlet {
       resp.setStatus(SC_INTERNAL_SERVER_ERROR);
     }
   }
+
   public GenericApplicationContext getContext() {
     return context;
   }
